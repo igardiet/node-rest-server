@@ -25,11 +25,6 @@
     ></div>
     <button id="google_signout">Signout</button>
 
-    <!-- <script>
-      const clientId = process.env.GOOGLE_CLIENT_ID
-      document.getElementById('g_id_onload').setAttribute('data-client_id', clientId)
-    </script> -->
-
     <script>
       function handleCredentialResponse(response) {
         const body = {id_token: response.credential}
