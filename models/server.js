@@ -6,6 +6,7 @@ class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || 3000;
+    this.authPath = '/api/auth';
     this.usersPath = '/api/users';
     this.connectDB(); // Connection to database
     this.middlewares(); // Middlewares
@@ -23,6 +24,7 @@ class Server {
   }
 
   routes() {
+    this.app.use(this.authPath, require('../routes/auth'));
     this.app.use(this.usersPath, require('../routes/users'));
   }
 
