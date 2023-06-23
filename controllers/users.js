@@ -52,16 +52,9 @@ const deleteUsers = async (req, res = response) => {
   res.json(user);
 };
 
-const patchUsers = (req, res) => {
-  res.json({
-    msg: 'patch API - controller',
-  });
-};
-
 module.exports = {
   getUsers,
   postUsers,
   putUsers,
-  patchUsers,
   deleteUsers,
 };
