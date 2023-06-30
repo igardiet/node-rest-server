@@ -5,6 +5,7 @@ const isValidRole = async (role = '') => {
   if (!roleExists) {
     throw new Error(`${role} is not registered in the DB`);
   }
+  return true;
 };
 
 // EMAIL EXISTS VERIFICATION  *!
@@ -13,6 +14,7 @@ const isEmailExistent = async (email = '') => {
   if (emailExists) {
     throw new Error(`${email} is already in use`);
   }
+  return true;
 };
 
 const userExistsById = async id => {
@@ -20,6 +22,7 @@ const userExistsById = async id => {
   if (!userExists) {
     throw new Error(`ID: ${id} is non-existent`);
   }
+  return true;
 };
 
 const categoryExistsById = async id => {
@@ -27,6 +30,7 @@ const categoryExistsById = async id => {
   if (!categoryExists) {
     throw new Error(`ID: ${id} is non-existent`);
   }
+  return true;
 };
 
 const productExistsById = async id => {
@@ -34,6 +38,17 @@ const productExistsById = async id => {
   if (!productExists) {
     throw new Error(`ID: ${id} is non-existent`);
   }
+  return true;
+};
+
+const allowedCollections = (collection = '', collections = []) => {
+  const included = collections.includes(collection);
+  if (!included) {
+    throw new Error(
+      `Collection ${collection} is not allowed, only ${collections}`
+    );
+  }
+  return true;
 };
 
 module.exports = {
@@ -42,4 +57,5 @@ module.exports = {
   userExistsById,
   categoryExistsById,
   productExistsById,
+  allowedCollections,
 };
