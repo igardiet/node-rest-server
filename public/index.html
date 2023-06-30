@@ -28,6 +28,7 @@
 
     <script>
       function handleCredentialResponse(response) {
+        console.log('id_token', response.credential)
         const body = {id_token: response.credential}
 
         fetch('http://localhost:8000/api/auth/google', {
