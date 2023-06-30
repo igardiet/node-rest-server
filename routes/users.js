@@ -1,25 +1,19 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const router = Router();
-
 const {
   validateFields,
   validateJWT,
   isAdminRole,
   hasRole,
 } = require('../middlewares');
-
-const {
-  isValidRole,
-  isEmailExistent,
-  userExistsById,
-} = require('../helpers/db-validators');
 const {
   getUsers,
   postUsers,
   putUsers,
   deleteUsers,
-} = require('../controllers/users');
+} = require('../controllers');
+const { isValidRole, isEmailExistent, userExistsById } = require('../helpers');
 
 router.get('/', getUsers);
 
