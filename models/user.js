@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require( 'mongoose' );
 
-const UserSchema = Schema({
+const UserSchema = Schema( {
   name: {
     type: String,
     required: [true, 'Name is mandatory'],
@@ -31,13 +31,14 @@ const UserSchema = Schema({
     type: Boolean,
     default: false,
   },
-});
+} );
 
 // REMOVE DESIRED KEYS FROM MONGODB COLLECTION *!
-UserSchema.methods.toJSON = function () {
+UserSchema.methods.toJSON = function ()
+{
   const { __v, password, _id, ...user } = this.toObject();
   user.uid = _id;
   return user;
 };
 
-module.exports = model('User', UserSchema);
+module.exports = model( 'User', UserSchema );

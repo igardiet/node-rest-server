@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require( 'mongoose' );
 
-const CategorySchema = Schema({
+const CategorySchema = Schema( {
   name: {
     type: String,
     required: [true, 'name is mandatory'],
@@ -16,11 +16,12 @@ const CategorySchema = Schema({
     ref: 'User',
     required: true,
   },
-});
+} );
 
-CategorySchema.methods.toJSON = function () {
+CategorySchema.methods.toJSON = function ()
+{
   const { __v, status, ...data } = this.toObject();
   return data;
 };
 
-module.exports = model('Category', CategorySchema);
+module.exports = model( 'Category', CategorySchema );
